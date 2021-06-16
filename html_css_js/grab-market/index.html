@@ -1,0 +1,77 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/index.css" type="text/css"  >
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Grab Market</title>
+    </head>
+    <body>
+        <div id="header">
+            <div id="header-area">
+                <img src="/icons/logo.png" alt="">
+            </div>
+        </div>
+        <div id="body">
+            <div id="banner">
+                <img src="/banners/banner1.png" alt="">
+            </div>
+            <h1>판매되는 상품들</h1>
+            <div id="product-list">
+               <script >
+                   axios.get("https://ce051a97-a55d-4c9d-a516-442395f25ca0.mock.pstmn.io/products")
+                   .then((data)=>{
+                       const product = data.data.products
+                       console.log(product)
+                    for(let item of product){
+
+                        //상품 그릇
+                        let div = document.createElement('div')
+                        div.setAttribute('class', "product-card")
+
+                        // 상품이미지
+                        let img = document.createElement('img')
+                        img.setAttribute('src', item.img)
+                        img.setAttribute('class', "product-img")
+                        console.log(item.img)
+                        div.append(img)
+                        let list = document.querySelector('#product-list')
+                        list.append(div)
+
+                        // 텍스트(가격,이름)
+                        let textDiv = document.createElement('div')
+                        textDiv.setAttribute('class', "product-contents")
+                        let spanName = document.createElement('span')
+                        spanName.textContent = `상품명 : ${item.name}`
+                        spanName.setAttribute('class', "product-name")
+
+                        let spanPrice = document.createElement('span')
+                        spanPrice.textContent = `가격 : ${item.price}원`
+                        spanPrice.setAttribute('class', "product-price")
+                        textDiv.append(spanName, spanPrice)
+                        div.append(textDiv)
+
+                        // 작성자 이미지
+                        let divImg = document.createElement("div")
+                        divImg.setAttribute('class', "product-seller")
+                        let imgAvata = document.createElement('img')
+                        imgAvata.setAttribute('src', '/icons/avatar.png')
+                        imgAvata.setAttribute('class', "product-avatar")
+                        let spanAvatar = document.createElement('span')
+                        spanAvatar.textContent = ` ${item.person}`
+
+                        divImg.append(imgAvata, spanAvatar)
+                        textDiv.append(divImg)
+                        }                                        
+                   })
+                               
+                   
+               </script>
+            </div>
+        </div>
+        <div id="footer">
+            sdf
+        </div>
+    </body>
+</html>
