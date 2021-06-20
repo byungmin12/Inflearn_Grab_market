@@ -9,10 +9,10 @@ function MainPage(){
    const [info, setinfo] = useState([])
    
     useEffect(()=>{
-    let url = "https://ce051a97-a55d-4c9d-a516-442395f25ca0.mock.pstmn.io/products"
+    let url = "http://localhost:8080/products"
 
      return   axios.get(url)
-                .then((data)=> setinfo(data.data.products))
+                .then((data)=> setinfo(data.data))
     },[])
 
    console.log(info)
