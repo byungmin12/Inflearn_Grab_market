@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import './index.css'
+import {API_URL}from "../config/constants.js"
+
 
 
 function ProductPage() {
@@ -11,8 +13,8 @@ function ProductPage() {
     
     useEffect(() => {
         
-        return  axios.get(`https://ce051a97-a55d-4c9d-a516-442395f25ca0.mock.pstmn.io/products/${id}`)
-                .then((data)=>setproduct(data.data))
+        return  axios.get(`${API_URL}/products/${id}`)
+                .then((data)=>setproduct(data.data.product))
     }, [])
     
 
