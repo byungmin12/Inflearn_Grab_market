@@ -13,6 +13,7 @@ function ProductPage() {
     
     useEffect(() => {
         
+        
         return  axios.get(`${API_URL}/products/${id}`)
                 .then((data)=>setproduct(data.data.product))
     }, [])
@@ -25,7 +26,7 @@ function ProductPage() {
     return (
         <div>
         <div id="image-box">
-          <img src={`/images${product.img}`} alt=""/>
+          <img src={`${API_URL}/${product.img}`} alt=""/>
         </div>
         <div id="profile-box">
           <img src="/images/icons/avatar.png" alt=""/>

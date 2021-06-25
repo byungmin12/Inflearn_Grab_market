@@ -7,7 +7,7 @@ import {API_URL} from '../config/constants.js'
 dayjs.extend(relativeTime)
 
 function Card({data}) {
-    console.log(data)
+
     return (
         <div>
                     <div>
